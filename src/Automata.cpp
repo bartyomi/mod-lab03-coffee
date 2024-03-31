@@ -42,7 +42,7 @@ void Automata::coin(int value) {
     }
 }
 
-void Automata::choice(string value) {
+void Automata::choice(std::string value) {
     if (state == ACCEPT) {
         coffee = value;
         state = CHECK;
@@ -95,7 +95,7 @@ void Automata::finish() {
 }
 
 void Automata::getMenu() {
-    for (string name, int price)
+    for (const auto& [name, price] : menu)
         std::cout << name << " - " << price << std::endl;
 }
 
