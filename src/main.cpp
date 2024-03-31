@@ -1,3 +1,5 @@
+// Copyright 2024 Artyom Burdeyny
+
 #include "../include/Automata.h"
 
 int main() {
