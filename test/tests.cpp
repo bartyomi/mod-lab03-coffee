@@ -12,7 +12,7 @@ TEST(test, on) {
 TEST(test, incorrectAction) {
     Automata machine;
     machine.coin(50);
-    EXPECT_EQ(STATE::WAIT, machine.getState());
+    EXPECT_EQ(STATE::OFF, machine.getState());
 }
 
 TEST(test, off) {
