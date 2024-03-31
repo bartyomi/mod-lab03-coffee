@@ -2,8 +2,6 @@
 
 #include "../include/Automata.h"
 
-using namespace std;
-
 Automata::Automata() {
     cash = 0;
     state = OFF;
@@ -19,18 +17,18 @@ Automata::Automata() {
 void Automata::on() {
     if (state == OFF) {
         state = WAIT;
-        cout << "Automata is on" << endl;
+        std::cout << "Automata is on" << std::endl;
     } else {
-        cout << "Impossible action" << endl;
+        std::cout << "Impossible action" << std::endl;
     }
 }
 
 void Automata::off() {
     if (state == WAIT) {
         state = OFF;
-        cout << "Automata is off" << endl;
+        std::cout << "Automata is off" << std::endl;
     } else {
-        cout << "Impossible action" << endl;
+        std::cout << "Impossible action" << std::endl;
     }
 }
 
@@ -38,9 +36,9 @@ void Automata::coin(int value) {
     if (state == WAIT || state == ACCEPT) {
         state = ACCEPT;
         cash += value;
-        cout << "Added " << cash << endl;
+        std::cout << "Added " << cash << std::endl;
     } else {
-        cout << "Impossible action" << endl;
+        std::cout << "Impossible action" << std::endl;
     }
 }
 
@@ -49,7 +47,7 @@ void Automata::choice(string value) {
         coffee = value;
         state = CHECK;
     } else {
-        cout << "Impossible action" << endl;
+        std::cout << "Impossible action" << std::endl;
     }
 }
 
@@ -57,9 +55,9 @@ bool Automata::check() {
     if (state == CHECK) {
         if (cash >= prices[find(menu,
             menu+(sizeof(menu)/sizeof(menu[0])), coffee)]) return true;
-        cout << "Not enough money" << endl;
+        std::cout << "Not enough money" << std::endl;
     } else {
-        cout << "Impossible action" << endl;
+        std::cout << "Impossible action" << std::endl;
     }
     return false;
 }
@@ -68,9 +66,9 @@ void Automata::cancel() {
     if (state == ACCEPT || state == CHECK) {
         cash = 0;
         state = WAIT;
-        cout << "Operation canceled" << endl;
+        std::cout << "Operation canceled" << std::endl;
     } else {
-        cout << "Impossible action" << endl;
+        std::cout << "Impossible action" << std::endl;
     }
 }
 
@@ -80,26 +78,26 @@ void Automata::cook() {
         if (!check()) return;
         cash -= prices[find(menu, menu+(sizeof(menu)/sizeof(menu[0])), coffee)];
         state = COOK;
-        cout << "Cooking..." << endl;
+        std::cout << "Cooking..." << std::endl;
     } else {
-        cout << "Impossible action" << endl;
+        std::cout << "Impossible action" << std::endl;
     }
 }
 
 void Automata::finish() {
     if (state == COOK) {
-        cout << "Your " << coffee << " is done" << endl;
-        cout << "Take " << cash << " back" << endl;
+        std::cout << "Your " << coffee << " is done" << std::endl;
+        std::cout << "Take " << cash << " back" << std::endl;
         cash = 0;
         state = WAIT;
     } else {
-        cout << "Impossible action" << endl;
+        std::cout << "Impossible action" << std::endl;
     }
 }
 
 void Automata::getMenu() {
     for (string name, int price)
-        cout << name << " - " << price << endl;
+        std::cout << name << " - " << price << std::endl;
 }
 
 STATE Automata::getState() {
