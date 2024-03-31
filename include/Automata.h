@@ -12,9 +12,9 @@ enum STATE { OFF, WAIT, ACCEPT, CHECK, COOK };
 class Automata {
  private:
     int cash;
-    std::string[] menu;
-    int[] prices;
+    std::map<std::string, int> menu;
     STATE state;
+    std::string coffee;
  public:
     Automata();
     void on();
