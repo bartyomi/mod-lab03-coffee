@@ -53,7 +53,7 @@ void Automata::choice(string value) {
 
 bool Automata::check() {
     if (state == CHECK) {
-        if (cash >= menu[coffee]) return true;
+        if (cash >= prices[find(menu, menu+(sizeof(menu)/sizeof(menu[0])), coffee)]) return true;
         cout << "Not enough money" << endl;
     } else {
         cout << "Impossible action" << endl;
@@ -75,7 +75,7 @@ void Automata::cancel() {
 void Automata::cook() {
     if (state == CHECK) {
         if (!check()) return;
-        cash -= menu[coffee];
+        cash -= prices[find(menu, menu+(sizeof(menu)/sizeof(menu[0])), coffee)];
         state = COOK;
         cout << "Cooking..." << endl;
     } else {
