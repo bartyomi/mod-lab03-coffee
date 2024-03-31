@@ -1,3 +1,5 @@
+// Copyright 2024 Artyom Burdeyny
+
 #include "../include/Automata.h"
 
 using namespace std;
@@ -53,7 +55,8 @@ void Automata::choice(string value) {
 
 bool Automata::check() {
     if (state == CHECK) {
-        if (cash >= prices[find(menu, menu+(sizeof(menu)/sizeof(menu[0])), coffee)]) return true;
+        if (cash >= prices[find(menu,
+            menu+(sizeof(menu)/sizeof(menu[0])), coffee)]) return true;
         cout << "Not enough money" << endl;
     } else {
         cout << "Impossible action" << endl;
