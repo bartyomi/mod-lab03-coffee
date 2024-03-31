@@ -36,27 +36,27 @@ void Automata::coin(int value) {
     if (state == WAIT || state == ACCEPT) {
         state = ACCEPT;
         cash += value;
-        std::cout << "Added " << cash << std::endl;
+        cout << "Added " << cash << endl;
     } else {
-        std::cout << "Impossible action" << std::endl;
+        cout << "Impossible action" << endl;
     }
 }
 
-void Automata::choice(std::string value) {
+void Automata::choice(string value) {
     if (state == ACCEPT) {
         coffee = value;
         state = CHECK;
     } else {
-        std::cout << "Impossible action" << std::endl;
+        cout << "Impossible action" << endl;
     }
 }
 
 bool Automata::check() {
     if (state == CHECK) {
         if (cash >= menu[coffee]) return true;
-        std::cout << "Not enough money" << std::endl;
+        cout << "Not enough money" << endl;
     } else {
-        std::cout << "Impossible action" << std::endl;
+        cout << "Impossible action" << endl;
     }
     return false;
 }
@@ -65,9 +65,9 @@ void Automata::cancel() {
     if (state == ACCEPT || state == CHECK) {
         cash = 0;
         state = WAIT;
-        std::cout << "Operation canceled" << std::endl;
+        cout << "Operation canceled" << endl;
     } else {
-        std::cout << "Impossible action" << std::endl;
+        cout << "Impossible action" << endl;
     }
 }
 
@@ -77,26 +77,26 @@ void Automata::cook() {
         if (!check()) return;
         cash -= menu[coffee];
         state = COOK;
-        std::cout << "Cooking..." << std::endl;
+        cout << "Cooking..." << endl;
     } else {
-        std::cout << "Impossible action" << std::endl;
+        cout << "Impossible action" << endl;
     }
 }
 
 void Automata::finish() {
     if (state == COOK) {
-        std::cout << "Your " << coffee << " is done" << std::endl;
-        std::cout << "Take " << cash << " back" << std::endl;
+        cout << "Your " << coffee << " is done" << endl;
+        cout << "Take " << cash << " back" << endl;
         cash = 0;
         state = WAIT;
     } else {
-        std::cout << "Impossible action" << std::endl;
+        cout << "Impossible action" << endl;
     }
 }
 
 void Automata::getMenu() {
     for (string name, int price)
-        std::cout << name << " - " << price << std::endl;
+        cout << name << " - " << price << endl;
 }
 
 STATE Automata::getState() {
